@@ -60,6 +60,30 @@
     return self.frame.size.height;
 }
 
+- (void)setCenterX:(CGFloat)centerX{
+    
+    CGPoint center = self.center;
+    center.x = centerX;
+    self.center = center;
+}
+
+- (CGFloat)centerX{
+    
+    return self.center.x;
+}
+
+- (void)setCenterY:(CGFloat)centerY{
+    
+    CGPoint center = self.center;
+    center.y = centerY;
+    self.center = center;
+}
+
+- (CGFloat)centerY{
+    
+    return self.center.y;
+}
+
 - (void)setSize:(CGSize)size{
     
     CGRect frame = self.frame;
@@ -103,6 +127,17 @@
     
     self.layer.borderColor = color.CGColor;
     self.layer.borderWidth = width;
+}
+
+//获取view的controller
+- (UIViewController *)viewController {
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)nextResponder;
+        }
+    }
+    return nil;
 }
 
 @end
