@@ -11,24 +11,41 @@
 
 @implementation NSObject (CHTSwizzling)
 
-+ (void)methodSwizzlingWithOriginalSelector:(SEL)originalSelector swizzlingSelector:(SEL)swizzlingSelector{
++ (void)instanceMethodSwizzleWithClass:(Class)class oldSelector:(SEL)oldSelector newSelectir:(SEL)newSelector{
     
-    Class class = [self class];
     //原有方法
-    Method originalMethod = class_getInstanceMethod(class, originalSelector);
+    Method oldMethod = class_getInstanceMethod(class, oldSelector);
     //准备替换的自定义方法
-    Method swizzledMethod = class_getInstanceMethod(class, swizzlingSelector);
+    Method newMethod = class_getInstanceMethod(class, newSelector);
     
     //尝试给源SEL添加IMP，避免源SEL没有实现IMP的情况
-    BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+    BOOL didAddMethod = class_addMethod(class, oldSelector, method_getImplementation(newMethod), method_getTypeEncoding(newMethod));
     
     if (didAddMethod) {
         //添加成功，说明源SEL没有实现IMP，将源SEL的IMP替换为准备替换的SEL的IMP
-        class_replaceMethod(class, swizzlingSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+        class_replaceMethod(class, newSelector, method_getImplementation(oldMethod), method_getTypeEncoding(oldMethod));
     }else{
         //添加失败，说明源SEL已经实现IMP，直接交换两个SEL的IMP即可
-        method_exchangeImplementations(originalMethod, swizzledMethod);
+        method_exchangeImplementations(oldMethod, newMethod);
     }
+}
+
++ (void)classMethodSwizzleWithClass:(Class)class oldSelector:(SEL)oldSelector newSelector:(SEL)newSelector{
+    
+    class = object_getClass(class);
+    [self instanceMethodSwizzleWithClass:class oldSelector:oldSelector newSelectir:newSelector];
+}
+
++ (void)classMethodSwizzleWithOldSelector:(SEL)oldSelector newSelector:(SEL)newSelector{
+    
+    Class class = [self class];
+    [self classMethodSwizzleWithClass:class oldSelector:oldSelector newSelector:newSelector];
+}
+
++ (void)instanceMethodSwizzleWithOldSelector:(SEL)oldSelector newSelector:(SEL)newSelector{
+    
+    Class class = [self class];
+    [self instanceMethodSwizzleWithClass:class oldSelector:oldSelector newSelectir:newSelector];
 }
 
 

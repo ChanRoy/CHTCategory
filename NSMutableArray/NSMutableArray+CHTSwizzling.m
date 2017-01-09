@@ -17,11 +17,11 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        [objc_getClass("__NSArrayM") methodSwizzlingWithOriginalSelector:@selector(addObject:) swizzlingSelector:@selector(safeAddObject:)];
-        [objc_getClass("__NSArrayM") methodSwizzlingWithOriginalSelector:@selector(removeObject:) swizzlingSelector:@selector(safeRemoveObject:)];
-        [objc_getClass("__NSArrayM") methodSwizzlingWithOriginalSelector:@selector(insertObject:atIndex:) swizzlingSelector:@selector(safeInsertObject:atIndex:)];
-        [objc_getClass("__NSArrayM") methodSwizzlingWithOriginalSelector:@selector(objectAtIndex:) swizzlingSelector:@selector(safeObjectAtIndex:)];
-        [objc_getClass("__NSArrayM") methodSwizzlingWithOriginalSelector:@selector(removeObjectAtIndex:) swizzlingSelector:@selector(safeRemoveObjectAtIndex:)];
+        [objc_getClass("__NSArrayM") classMethodSwizzleWithOldSelector:@selector(addObject:) newSelector:@selector(safeAddObject:)];
+        [objc_getClass("__NSArrayM") classMethodSwizzleWithOldSelector:@selector(removeObject:) newSelector:@selector(safeRemoveObject:)];
+        [objc_getClass("__NSArrayM") classMethodSwizzleWithOldSelector:@selector(insertObject:atIndex:) newSelector:@selector(safeInsertObject:atIndex:)];
+        [objc_getClass("__NSArrayM") classMethodSwizzleWithOldSelector:@selector(objectAtIndex:) newSelector:@selector(safeObjectAtIndex:)];
+        [objc_getClass("__NSArrayM") classMethodSwizzleWithOldSelector:@selector(removeObjectAtIndex:) newSelector:@selector(safeRemoveObjectAtIndex:)];
     });
 }
 

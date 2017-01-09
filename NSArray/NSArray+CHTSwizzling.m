@@ -17,7 +17,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        [objc_getClass("__NSArrayI") methodSwizzlingWithOriginalSelector:@selector(objectAtIndex:) swizzlingSelector:@selector(safeObjectAtIndex:)];
+        [objc_getClass("__NSArrayI") classMethodSwizzleWithOldSelector:@selector(objectAtIndex:) newSelector:@selector(safeObjectAtIndex:)];
     });
 }
 

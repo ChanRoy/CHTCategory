@@ -8,17 +8,47 @@
 
 #import <Foundation/Foundation.h>
 
+//Base on http://www.jianshu.com/p/f6dad8e1b848
+
 @interface NSObject (CHTSwizzling)
 
 
 /**
- method swizzling 把系统的方法替换为自定义方法
- Base on http://www.jianshu.com/p/f6dad8e1b848
- 
- @param orginalSelector 系统的方法
- @param swizzlingSelector 自定义方法
+ 交换一个实例方法的实现
+
+ @param class 交换方法的类
+ @param oldSelector 原实例方法的实现
+ @param newSelector 新实例方法的实现
  */
-+ (void)methodSwizzlingWithOriginalSelector:(SEL)originalSelector swizzlingSelector:(SEL)swizzlingSelector;
++ (void)instanceMethodSwizzleWithClass:(Class)class oldSelector:(SEL)oldSelector newSelectir:(SEL)newSelector;
+
+
+/**
+ 交换一个类方法的实现
+
+ @param class 交换方法的类
+ @param oldSelector 原类方法的实现
+ @param newSelector 新类方法的实现
+ */
++ (void)classMethodSwizzleWithClass:(Class)class oldSelector:(SEL)oldSelector newSelector:(SEL)newSelector;
+
+
+/**
+ 交换当前类的类方法的实现
+
+ @param oldSelector 原类方法的实现
+ @param newSelector 新类方法的实现
+ */
++ (void)classMethodSwizzleWithOldSelector:(SEL)oldSelector newSelector:(SEL)newSelector;
+
+/**
+ 交换当前实例方法的实现
+ 
+ @param oldSelector 原实例方法的实现
+ @param newSelector 新实例方法的实现
+ */
++ (void)instanceMethodSwizzleWithOldSelector:(SEL)oldSelector newSelector:(SEL)newSelector;
+
 
 
 @end
