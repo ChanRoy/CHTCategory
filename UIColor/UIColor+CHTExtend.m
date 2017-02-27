@@ -76,4 +76,43 @@
     }
 }
 
+- (BOOL)isEqualWithColor:(UIColor *)color{
+    
+    CGFloat red1, green1, blue1, alpha1;
+    CGFloat red2, green2, blue2, alpha2;
+    
+    [self getRed:&red1 green:&green1 blue:&blue1 alpha:&alpha1];
+    [color getRed:&red2 green:&green2 blue:&blue2 alpha:&alpha2];
+    
+    return (red1 == red2 && green1 == green2 && blue1 == blue2 && alpha1 == alpha2);
+}
+
+- (CGFloat)getRed{
+    
+    CGFloat red;
+    [self getRed:&red green:nil blue:nil alpha:nil];
+    return red;
+}
+
+- (CGFloat)getGreen{
+    
+    CGFloat green;
+    [self getRed:nil green:&green blue:nil alpha:nil];
+    return green;
+}
+
+- (CGFloat)getBlue{
+    
+    CGFloat blue;
+    [self getRed:nil green:nil blue:&blue alpha:nil];
+    return blue;
+}
+
+- (CGFloat)getAlpha{
+    
+    CGFloat alpha;
+    [self getRed:nil green:nil blue:nil alpha:&alpha];
+    return alpha;
+}
+
 @end
