@@ -22,6 +22,7 @@ typedef enum : NSUInteger {
  */
 @interface UIView (CHTGradient)
 
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
 
 /**
  set gradient color
