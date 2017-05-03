@@ -1,23 +1,23 @@
 //
-//  UIViewController+MBProgressHUD.m
-//  CHTGithub
+//  NSObject+MBProgressHUD.m
+//  QFangWangHK
 //
-//  Created by cht on 17/3/26.
-//  Copyright © 2017年 cht. All rights reserved.
+//  Created by cht on 2017/5/3.
+//  Copyright © 2017年 qfangwanghk. All rights reserved.
 //
 
-#import "UIViewController+MBProgressHUD.h"
+#import "NSObject+MBProgressHUD.h"
 #import <objc/runtime.h>
 
 #define kHUDDelay 0.7
 
-@interface UIViewController ()<MBProgressHUDDelegate>
+@interface NSObject ()<MBProgressHUDDelegate>
 
 @property (nonatomic, copy) MBProgressHUD *hud;
 
 @end
 
-@implementation UIViewController (MBProgressHUD)
+@implementation NSObject (MBProgressHUD)
 
 - (void)setHud:(MBProgressHUD *)hud{
     
@@ -28,6 +28,7 @@
     
     return objc_getAssociatedObject(self, _cmd);
 }
+
 
 - (void)startLoading:(UIView *)view text:(NSString *)text{
     
@@ -61,6 +62,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.removeFromSuperViewOnHide = YES;
     hud.mode = MBProgressHUDModeText;
+    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
     hud.label.font = [UIFont systemFontOfSize:15];
     hud.label.text = message;
     [hud hideAnimated:YES afterDelay:delay];
@@ -76,6 +78,5 @@
         self.hud = nil;
     }
 }
-
 
 @end
