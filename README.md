@@ -22,6 +22,8 @@ OC Category Collection
 	<li>NSObject
 		<ul>
 			<li>NSObject+CHTSwizzling : method swizzling </li>
+			<li>NSObject+MBProgressHUD
+			</li>
 		</ul>
 	</li>
 	<li>NSString
