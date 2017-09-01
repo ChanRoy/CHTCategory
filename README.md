@@ -72,6 +72,11 @@ OC Category Collection
 			<li>UIViewController+SVProgressHUD : SVProgressHUD extension</li>
 		</ul>
 	</li>
+	<li>NSTimer
+		<ul>
+			<li>NSTimer+CHTBlocksSupport : solve the problem of retain cycle while using NSTimer</li>
+		</ul>
+	</li>
 </ul>
 
 ## 中文文档
