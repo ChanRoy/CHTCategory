@@ -9,6 +9,10 @@
 #import "UIDevice+CHTAdd.h"
 #include <sys/sysctl.h>
 
+/**
+ *  reference: https://www.theiphonewiki.com/wiki/Models
+ */
+
 @implementation UIDevice (CHTAdd)
 
 - (NSString *)machineModel {
@@ -54,6 +58,7 @@
                               @"iPod4,1" : @"iPod touch 4",
                               @"iPod5,1" : @"iPod touch 5",
                               @"iPod7,1" : @"iPod touch 6",
+                              @"iPod9,1" : @"iPod touch (7th generation)",
                               
                               @"iPhone1,1" : @"iPhone 1G",
                               @"iPhone1,2" : @"iPhone 3G",
@@ -85,10 +90,10 @@
                               @"iPhone10,5" : @"iPhone 8 Plus",
                               @"iPhone10,3" : @"iPhone X",
                               @"iPhone10,6" : @"iPhone X",
-                              @"iPhone11,8" : @"iPhone XR",
                               @"iPhone11,2" : @"iPhone XS",
                               @"iPhone11,4" : @"iPhone XS Max",
                               @"iPhone11,6" : @"iPhone XS Max",
+                              @"iPhone11,8" : @"iPhone XR",
                               
                               @"iPad1,1" : @"iPad 1",
                               @"iPad2,1" : @"iPad 2 (WiFi)",
@@ -129,6 +134,18 @@
                               @"iPad7,4" : @"iPad Pro (10.5-inch)",
                               @"iPad7,5" : @"iPad (6th generation)",
                               @"iPad7,6" : @"iPad (6th generation)",
+                              @"iPad8,1" : @"iPad Pro (11-inch)",
+                              @"iPad8,2" : @"iPad Pro (11-inch)",
+                              @"iPad8,3" : @"iPad Pro (11-inch)",
+                              @"iPad8,4" : @"iPad Pro (11-inch)",
+                              @"iPad8,5" : @"iPad Pro (12.9-inch) (3rd generation)",
+                              @"iPad8,6" : @"iPad Pro (12.9-inch) (3rd generation)",
+                              @"iPad8,7" : @"iPad Pro (12.9-inch) (3rd generation)",
+                              @"iPad8,8" : @"iPad Pro (12.9-inch) (3rd generation)",
+                              @"iPad11,1" : @"iPad mini (5th generation)",
+                              @"iPad11,2" : @"iPad mini (5th generation)",
+                              @"iPad11,3" : @"iPad Air (3rd generation)",
+                              @"iPad11,4" : @"iPad Air (3rd generation)",
                               
                               @"AppleTV2,1" : @"Apple TV 2",
                               @"AppleTV3,1" : @"Apple TV 3",
